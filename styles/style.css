@@ -9,6 +9,9 @@ body {
 	font-weight: 400;
 	font-style: normal;
 }
+.lock {
+	overflow: hidden;
+}
 /* container */
 .container {
 	max-width: 1370px;
@@ -221,21 +224,65 @@ body {
 	transition: width 0.3s ease 0s;
 	background: #f5333f;
 }
-/* LINKSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS */
-.item-bottom-header__sublinks {
-	position: absolute;
-	bottom: -20px;
-	left: 0;
-	display: none;
+/*  */
+.bottom-header__item {
+	position: relative;
 }
+
+.bottom-header__dropdown {
+	display: none;
+	position: absolute;
+	min-width: 100%;
+	top: 110%;
+	left: 0;
+	background-color: white;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+	padding: 10px;
+	z-index: 100;
+	border: 1px solid red;
+}
+
+.bottom-header__item:hover .bottom-header__dropdown {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.bottom-header__item.active .bottom-header__dropdown {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.bottom-header__dropdown a {
+	display: block;
+	margin-bottom: 8px;
+	text-decoration: none;
+	color: black;
+	text-wrap: nowrap;
+}
+
+.bottom-header__dropdown a:last-child {
+	margin-bottom: 0;
+}
+
+.bottom-header__dropdown a:hover {
+	color: #ce2c37;
+}
+
+/* Стили для мобильных устройств */
+@media (max-width: 768px) {
+	.bottom-header__item:hover .bottom-header__dropdown {
+		display: none; /* Отключаем появление по наведению на мобильных */
+	}
+}
+/* LINKSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS */
+
 .bottom-header__link:hover {
 	color: #f5333f;
 }
 .bottom-header__link:hover::before {
 	width: 100%;
-}
-.bottom-header__link:hover .item-bottom-header__sublinks {
-	display: block;
 }
 /* burger */
 .burger {
@@ -335,16 +382,20 @@ body {
 	/* TEEEEEEEEEEEEEEEEEEEEEEEEEEEEST */
 	.header__bottom {
 		display: none;
-		width: 100%; /* Adjust width as needed */
+		width: 100%;
 		background-color: #fff;
 		overflow-y: auto;
+		/* position: absolute;
+		top: 100px;
+		left: -400px; */
 		transition: left 0.3s ease;
-		z-index: 1000; /* Ensure menu is below burger */
+		z-index: 1000;
+		transition: left 0.3s ease 0s;
 	}
 
 	.header__bottom.open {
 		display: block;
-		left: 0; /* Slide in */
+		/* left: 0; */
 	}
 
 	.bottom-header__list {
