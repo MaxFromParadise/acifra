@@ -15,25 +15,34 @@ burger.addEventListener('click', function () {
 const headerItems = document.querySelectorAll('.bottom-header__item');
 
 headerItems.forEach((item) => {
-	item.addEventListener('click', function (e) {
-		// Предотвращаем переход по ссылке
-		e.preventDefault();
+	const link = item.querySelector('.bottom-header__link');
+	const dropdown = item.querySelector('.bottom-header__dropdown');
 
-		// Закрываем другие открытые блоки
+	link.addEventListener('click', function (e) {
+		if (dropdown && window.innerWidth < 992) {
+			e.preventDefault();
+		}
+
 		headerItems.forEach((i) => {
 			if (i !== item) {
 				i.classList.remove('active');
 			}
 		});
 
-		// Переключаем активный класс
-		this.classList.toggle('active');
+		item.classList.toggle('active');
 	});
 });
 
-// Закрываем выпадающие блоки при клике вне элемента
 document.addEventListener('click', function (e) {
 	if (!e.target.closest('.bottom-header__item')) {
+		headerItems.forEach((item) => {
+			item.classList.remove('active');
+		});
+	}
+});
+
+window.addEventListener('resize', function () {
+	if (window.innerWidth >= 992) {
 		headerItems.forEach((item) => {
 			item.classList.remove('active');
 		});
