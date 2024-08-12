@@ -270,12 +270,6 @@ body {
 	color: #ce2c37;
 }
 
-/* Стили для мобильных устройств */
-@media (max-width: 768px) {
-	.bottom-header__item:hover .bottom-header__dropdown {
-		display: none; /* Отключаем появление по наведению на мобильных */
-	}
-}
 /* LINKSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS */
 
 .bottom-header__link:hover {
